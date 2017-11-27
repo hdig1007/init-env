@@ -1,0 +1,29 @@
+# mysql 
+mysql:
+  container_name: mysql
+  build: ./mysql
+  restart: always
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+# redis
+redis:
+  build: ./redis
+  container_name: redis
+  restart: always
+  ports:
+    - "6379:6379"
+  volumes:
+    - ./redis/data:/data
+# rabbitmq
+rabbitmq:
+  container_name: rabbitmq
+  image: rabbitmq:3-management
+  restart: always
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+  environment:
+    RABBITMQ_DEFAULT_USER: root
+    RABBITMQ_DEFAULT_PASS: 123456
